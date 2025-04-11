@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashApp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .header span {
+      font-size: 1.2rem;
+    }
+    .header button {
+      background-color: #00d64b;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+    }
+    .input-group {
+      margin-bottom: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      background: #1c1c1c;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      margin-bottom: 0.6rem;
+    }
+    .send-options {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .send-options button {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #1c1c1c;
+      color: white;
+    }
+    .send-options button.active {
+      background-color: #00d64b;
+      font-weight: bold;
+    }
+    .suggested {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: gray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .user-info span:first-child {
+      font-weight: bold;
+    }
+    .user-info span:last-child {
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>$24934512.24<br><small>Cash Balance</small></span>
+    <a href="balance.html"><button onclick="saveName()">Pay</button></a>
+  </div>
+  <div class="input-group">
+    <input type="text" id="recipientName" placeholder="To Name, $Cashtag, Phone, Email" />
+    <input type="text" placeholder="Add a note">
+  </div>
+  <div class="send-options">
+    <button class="active">Cash</button>
+    <button>Gift Card</button>
+    <button>Stock</button>
+  </div>
+  <div class="suggested">SUGGESTED</div>
+  <div id="suggested-results" style="margin-top: 2rem;"></div>
+    <div class="user" data-name="PTP">
+
+      <div class="avatar" data-name="PTP"></div>
+
+      <div class="user-info">
+        <span>PTP</span>
+        <span>$PalletTownPokemon</span>
+      </div>
+    </div>
+    <div class="user" data-name="PTP">
+
+      <div class="avatar"><img src="9b4a27ec74c5af3a3b9a7236a2c33917.img" alt="avatar"></div>
+      <div class="user-info">
+        <span>Manuel Galindo</span>
+        <span>$maccheese21</span>
+      </div>
+    </div>
+    <div class="user">
+      <div class="avatar"><img src="pfp3.png" alt="avatar"></div>
+      <div class="user-info">
+        <span>D C</span>
+        <span>$marzpops</span>
+      </div>
+    </div>
+    <div class="user">
+      <div class="avatar"><img src="pfp4.png" alt="avatar"></div>
+      <div class="user-info">
+        <span>Alberto Gutierrez Jr</span>
+        <span>$albertjr24</span>
+      </div>
+    </div>
+    <div class="user">
+      <div class="avatar"><img src="pfp5.png" alt="avatar"></div>
+      <div class="user-info">
+        <span>Imran Bacchus</span>
+        <span>$mopartruck</span>
+      </div>
+    </div>
+    <div class="user">
+      <div class="avatar"><img src="pfp6.png" alt="avatar"></div>
+      <div class="user-info">
+        <span>Pokemon Center</span>
+        <span>$PkmCenter</span>
+      </div>
+    </div>
+    <div class="user">
+      <div class="avatar"><img src="pfp7.png" alt="avatar"></div>
+      <div class="user-info">
+        <span>Ryan</span>
+        <span>$PureMittigan</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    function saveName() {
+      const name = document.getElementById('recipientName').value;
+      localStorage.setItem('recipientName', name);
+      window.location.href = 'balance.html'; // next step
+    }
+  </script>
+  <script>
+    function getRandomColor() {
+      const colors = ["#ff6b6b", "#feca57", "#1dd1a1", "#5f27cd", "#54a0ff", "#00d2d3", "#ff9ff3"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  
+    document.querySelectorAll('.avatar').forEach(avatar => {
+      const name = avatar.dataset.name || "U";
+      const initial = name.trim()[0].toUpperCase();
+      avatar.textContent = initial;
+      avatar.style.backgroundColor = getRandomColor();
+      avatar.style.color = "#fff";
+    });
+  </script>
+  <script>
+    const allUsers = Array.from(document.querySelectorAll('.user')).map(user => ({
+      name: user.dataset.name || user.querySelector('.user-info span:first-child').textContent.trim(),
+      tag: user.querySelector('.user-info span:last-child').textContent.trim()
+    }));
+  
+    const input = document.getElementById('recipientName');
+    const resultsContainer = document.getElementById('suggested-results');
+  
+    function getRandomColor() {
+      const colors = ["#ff6b6b", "#feca57", "#1dd1a1", "#5f27cd", "#54a0ff", "#00d2d3", "#ff9ff3"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  
+    function renderSuggestions(query) {
+      resultsContainer.innerHTML = ''; // Clear previous
+      if (!query) return;
+  
+      const matchedUsers = allUsers.filter(user =>
+        user.name.toLowerCase().includes(query.toLowerCase())
+      );
+  
+      matchedUsers.forEach(user => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'user';
+  
+        const avatar = document.createElement('div');
+        avatar.className = 'avatar';
+        avatar.textContent = user.name[0].toUpperCase();
+        avatar.style.backgroundColor = getRandomColor();
+        avatar.style.color = '#fff';
+  
+        const info = document.createElement('div');
+        info.className = 'user-info';
+  
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = user.name;
+  
+        const tagSpan = document.createElement('span');
+        tagSpan.textContent = user.tag;
+  
+        info.appendChild(nameSpan);
+        info.appendChild(tagSpan);
+        wrapper.appendChild(avatar);
+        wrapper.appendChild(info);
+  
+        resultsContainer.appendChild(wrapper);
+      });
+  
+      if (matchedUsers.length === 0) {
+        resultsContainer.innerHTML = '<div style="color:#888;">No matches found.</div>';
+      }
+    }
+  
+    input.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      renderSuggestions(query);
+    });
+  </script>
+  
+</body>
+</html>

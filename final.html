@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CashApp</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .checkmark {
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      background-color: #00c244;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .invite-text {
+      color: #cccccc;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 0 40px;
+    }
+
+    .button {
+      flex: 1;
+      padding: 8px 12px;
+      border: 0.07em solid transparent;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .invite-btn {
+      background-color: #333333;
+      background-size: 20;
+      color: white;
+      border: 0.07em solid #444;
+    }
+
+    .done-btn {
+      background-color: #00c244;
+      color: white;
+      border: 0.07em solid #00a636;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkmark">✔</div>
+  <div id="confirmationText"></div>
+  <br>
+  <br>
+  <br>
+  <div class="invite-text">Invite friends and get $15<br />when they try Cash App!</div>
+  <div class="buttons">
+    <a href="index.html"><button class="button invite-btn" onclick="inviteFriend()">Invite</button></a>
+    <br>
+    <a href="index.html"><button class="button done-btn" onclick="done()">Done</button></a>
+  </div>
+  <div id="confirmationText"></div>
+  <script>
+    const name = localStorage.getItem('recipientName') || 'Unknown';
+    const amount = localStorage.getItem('amount') || '20,000';
+  
+    document.getElementById('confirmationText').innerHTML = 
+      `You sent $${amount} <br> to ${name}`;
+  </script>
+</body>
+</html>
+

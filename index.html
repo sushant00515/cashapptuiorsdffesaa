@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CashApp</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0f0f0f;
+      color: white;
+    }
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #333;
+    }
+    .balance-section {
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+    .balance-header {
+      display: flex;
+      justify-content: space-between;
+      color: gray;
+    }
+    .balance {
+      font-size: 32px;
+      margin: 10px 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .button {
+      flex: 1 1 48%;
+      padding: 10px;
+      background-color: #2c2c2c;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    .file-tax {
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .file-tax button {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .assets {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .asset-box {
+      flex: 1 1 48%;
+      background-color: #1c1c1c;
+      border-radius: 15px;
+      padding: 15px;
+    }
+    .asset-box .value {
+      font-size: 20px;
+      margin: 5px 0;
+    }
+    .more-ways {
+      margin-top: 20px;
+      color: gray;
+    }
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #0f0f0f;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #333;
+    }
+    .bottom-bar span {
+      font-size: 20px;
+      color: white;
+    }
+
+    @media (max-width: 500px) {
+      .buttons, .assets {
+        flex-direction: column;
+      }
+      .button, .asset-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Money</h2>
+      <img src="pfp.jpeg" alt="Profile" class="profile-icon" />
+
+    </div>
+
+    <div class="balance-section">
+      <div class="balance-header">
+        <span>Cash Balance</span>
+        <span>Account & Routing</span>
+      </div>
+      <div class="balance">$24934512.24</div>
+      <div class="buttons">
+        <button class="button">Add Cash</button>
+        <a href="sendto.html"><button class="button">Cash Out</button></a>
+      </div>
+    </div>
+
+    <div class="file-tax">
+      <div>
+        <strong>Free tax filing</strong><br />
+        <small>Fast, easy, 100% free</small>
+      </div>
+      <button>FILE NOW</button>
+    </div>
+
+    <div class="assets">
+      <div class="asset-box">
+        <strong>Bitcoin</strong>
+        <div class="value">$2342403.97</div>
+        <small style="color: green;">▲ 0.91% today</small>
+      </div>
+      <div class="asset-box">
+        <strong>Stocks</strong>
+        <div class="value">$23423.99</div>
+        <small style="color: red;">▼ 1.00% today</small>
+      </div>
+    </div>
+
+    <div class="more-ways">More ways to add money</div>
+  </div>
+
+  <div class="bottom-bar">
+    <span>$29</span>
+    <span>•</span>
+    <span>$</span>
+    <span>🔍</span>
+    <span>31</span>
+  </div>
+</body>
+</html>
